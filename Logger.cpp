@@ -47,7 +47,6 @@ class Logger {
 	
 public:
 	unordered_map<string,Process> processes;
-	//static auto comp = [](const long& a, const long& b) { return a < b; };
 	map<long,Process> queue;
 
 	void start(string processId,int count){
@@ -56,7 +55,6 @@ public:
 		Process p(processId,now);
 		processes[processId] = (Process)p;
 		queue[now] = (Process)p;
-		//cout<<processId<<" "<<now;
 	}
 
 	void end(string processId){
@@ -74,7 +72,6 @@ public:
 		}
 		auto it = queue.begin();
 		Process p = it->second;
-		//cout<<p.getId()<<" "<<p.getEndTime()<<"\n";
 		if(p.getEndTime()!=-1){
 			cout<<p.getId()<<" started at "<<p.getStartTime()<<" and ended at "<<p.getEndTime()<<"\n";
 			processes.erase(p.getId());
